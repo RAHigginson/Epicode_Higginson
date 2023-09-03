@@ -1,0 +1,50 @@
+CREATE DATABASE IF NOT EXISTS prenotazione_volo;
+
+CREATE TABLE IF NOT EXISTS biglietto
+(
+	Ticket_number VARCHAR(50) PRIMARY KEY NOT NULL,
+	Prezzo DECIMAL(9,2),
+    Numero_volo VARCHAR(50) NOT NULL,
+	Numero_passaporto VARCHAR(50) NOT NULL,
+	Aeroporto_partenza CHAR(3) NOT NULL,
+	Aeroporto_arrivo CHAR(3) NOT NULL,
+    Codice_classe VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS passeggero
+(
+	Numero_passaporto VARCHAR(50) PRIMARY KEY NOT NULL,
+	Cittadinanza VARCHAR(50) NOT NULL,
+	Cognome VARCHAR (50) NOT NULL,
+    Nome VARCHAR(50) NOT NULL,
+    Email VARCHAR (250) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS volo
+(
+	Numero_volo VARCHAR(50) PRIMARY KEY NOT NULL,
+    Compagnia_area_IATA CHAR(3) NOT NULL,
+	Orario_partenza DATETIME NOT NULL,
+	Orario_arrivo DATETIME NOT NULL,
+    Durata_minuti INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS aeroporto
+(
+	Codice_IATA CHAR(3) PRIMARY KEY NOT NULL,
+	Nome VARCHAR (250) NOT NULL,
+	Paese VARCHAR (250) NOT NULL,
+    Città VARCHAR (250) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS compagnia_aerea
+(
+	Codice_IATA_compagnia CHAR(2) PRIMARY KEY NOT NULL,
+	Nome VARCHAR (250) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS classe
+(
+	Codice_classe VARCHAR(50) PRIMARY KEY NOT NULL,
+	Nome VARCHAR (250) NOT NULL
+);
